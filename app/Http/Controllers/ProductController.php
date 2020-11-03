@@ -69,7 +69,7 @@ class ProductController extends Controller
 
         if($product->save()) {
             if($image) {
-                $filename = $image->getClientOriginalName() . '_' . date('Y_m_d_H_i_s') . '.' . $image->getExtension();
+                $filename = $image->getClientOriginalName() . '_' . date('Y_m_d_H_i_s') . '.' . $image->getClientOriginalExtension();
                 $path = 'images/products/' . $filename;
                 $product->img_url = $path;
                 if($product->save()) {
@@ -173,7 +173,7 @@ class ProductController extends Controller
                     if($product->img_url) {
                         @unlink($product->img_url);
                     }
-                    $filename = $image->getClientOriginalName() . '_' . date('Y_m_d_H_i_s') . '.' . $image->getExtension();
+                    $filename = $image->getClientOriginalName() . '_' . date('Y_m_d_H_i_s') . '.' . $image->getClientOriginalExtension();
                     $path = 'images/products/' . $filename;
                     $product->img_url = $path;
                     if($product->save()) {
